@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Entertainment Form</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class='background'>
+      <h1 id='title'>Entertainment Form</h1>
+      <p id='description'>What do you like to read/watch?</p>
+      <div class='survey'>
+        <form id='survey-form' method="post" action='https://survey-form.freecodecamp.rocks/'>
+          <label id='name-label' for="name">Name</label>
+          <input id="name" type="text" placeholder='Enter your Name' required />
+          <label id='email-label' for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder='Enter your email' required />
+          <label id='number-label' for="number">Age (optional)</label>
+          <input id="number" type="number" name="age" min="13" max="120" placeholder='Enter your age' />
+          <label for="dropdown">Which of the following is your favorite to read/watch?</label>
+          <select id="dropdown">
+            <option value="">select a category</option>
+            <option value="1">Movies</option>
+            <option value="2">TV shows</option>
+            <option value="3">Books</option>
+            <option value="4">Other</option>
+          </select>
+          <label for="other">If other, please specify:</label>
+          <textarea id="other" rows="3" cols="30" placeholder="I like coding 🤓..."></textarea>
+          <label id='genres'>Which genres do you enjoy?
+            <label for="action" class='choice'><input id="action" type="checkbox" name="genres" class="inline" value='action' /> Action</label>
+            <label for="comedy" class='choice'><input id="comedy" type="checkbox" name="genres" class="inline" value='comedy' /> Comedy</label>
+            <label for="drama" class='choice'><input id="drama" type="checkbox" name="genres" class="inline" value='drama' /> Drama</label>
+            <label for="horror" class='choice'><input id="horror" type="checkbox" name="genres" class="inline" value='horror' /> Horror</label>
+            <label for="romance" class='choice'><input id="romance" type="checkbox" name="genres" class="inline" value='romance' /> Romance</label>
+            <label for="sci-fi" class='choice'><input id="sci-fi" type="checkbox" name="genres" class="inline" value='sci-fi' /> Sci-Fi</label>
+            <label for="thriller" class='choice'><input id="thriller" type="checkbox" name="genres" class="inline" value='thriller' /> Thriller</label>  
+          </label>
+          <label id='location'>Do you like to read/watch at home or outside?
+            <label for="at-home" class='choice'><input id="at-home" type="radio" name="location" class="inline" value='at-home' checked /> At Home</label>
+            <label for="out" class='choice'><input id="out" type="radio" name="location" class="inline" value='outside' /> Outside</label>
+          </label>
+          <label for="comments">Any Comments or Suggestions?</label>
+          <textarea id="comments" rows="5" cols="30" placeholder="Enter your comments for this form here"></textarea>
+          <input id='submit' type="submit" value="Submit" />
+        </form>
+      </div>
+        <footer>
+        <p class="address">Created by Issac Roy</p>
+        <p><a href="https://github.com/TheBoyRoy05" target="_blank">My Github</a></p>
+      </footer>
+    </div>
+  </body>
+  <footer>
+</html>
