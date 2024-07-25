@@ -2,12 +2,18 @@
 // where your node app starts
 
 // init project
-var express = require("express");
+import dotenv from "dotenv";
+dotenv.config(); 
+
+import express from 'express';
+import fetch from "node-fetch";
 var app = express();
+
+const __dirname = "/workspace/boilerplate-project-headerparser"
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 // so that your API is remotely testable by FCC
-var cors = require("cors");
+import cors from "cors";
 app.use(cors({ optionsSuccessStatus: 200 })); // some legacy browsers choke on 204
 
 // http://expressjs.com/en/starter/static-files.html
@@ -23,20 +29,21 @@ app.get("/api/hello", function (req, res) {
   res.json({ greeting: "hello API" });
 });
 
-// Listen on port set in environment variable or default to 3000
+// listen for requests :)
 var listener = app.listen(process.env.PORT || 3000, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
 
-app.get("/api/:date?", (req, res) => {
-  let reqDate = req.params.date;
-  let output = { unix: Date.now(), utc: new Date().getTime() };
-  if (reqDate) {
-    if (!isNaN(reqDate)) reqDate = Number(reqDate);
-    const date = new Date(reqDate);
-    output = isNaN(date.getTime())
-      ? { error: "Invalid Date" }
-      : { unix: date.valueOf(), utc: date.toUTCString() };
+app.get("/api/whoami", async (req, res) => {
+  try {
+    const ipResponse = await fetch("https://api.ipify.org?format=json");
+    const ipData = await ipResponse.json();
+    res.json({
+      ipaddress: ipData.ip,
+      language: req.headers["accept-language"],
+      software: req.headers["user-agent"],
+    });
+  } catch (error) {
+    console.log(error);
   }
-  res.json(output);
 });
