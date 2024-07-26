@@ -78,7 +78,6 @@ app.get("/api/users/:_id/logs", (req, res) => {
   const { from, to, limit } = req.query;
   User.findById(_id)
     .then((user) => {
-      console.log(user, req.query);
       let exercises = user.exercises;
       if (limit) exercises = exercises.slice(limit);
       if (from && to) {
@@ -91,7 +90,6 @@ app.get("/api/users/:_id/logs", (req, res) => {
           );
         });
       }
-      console.log(exercises)
 
       res.json({
         username: user.username,
